@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2023042207; // The current plugin version (YYYYMMDDXX).
+$plugin->version = 2023042208; // The current plugin version (YYYYMMDDXX).
 $plugin->requires = 2016120509; // The minimum Moodle version required.
 $plugin->component = 'block_wallet'; // The name of the plugin.
 $plugin->dependencies = array(

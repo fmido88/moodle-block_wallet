@@ -104,6 +104,10 @@ class block_wallet extends block_base {
             $mform->setType('value', PARAM_INT);
             $mform->hideIf('value', 'op', 'eq', 'balance');
 
+            $mform->addElement('hidden', 'sesskey');
+            $mform->setType('sesskey', PARAM_TEXT);
+            $mform->setDefault('sesskey', sesskey());
+
             $mform->addElement('submit', 'submit', 'submit');
 
             ob_start();
