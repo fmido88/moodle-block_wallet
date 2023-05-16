@@ -17,7 +17,7 @@
 /**
  * wallet enrolment plugin.
  *
- * @package    enrol_wallet
+ * @package    block_wallet
  * @copyright  2023 Mo Farouk <phun.for.physics@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

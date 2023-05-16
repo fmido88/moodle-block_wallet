@@ -19,7 +19,7 @@ In addition to the ability to use coupons to recharge wallet or using payment ga
 
 The plugin can be also installed by putting the contents of this directory to
 
-    {your/moodle/dirroot}/blocks/maxviews
+    {your/moodle/dirroot}/blocks/wallet
 
 Afterwards, log in to your Moodle site as an admin and go to _Site administration >
 Notifications_ to complete the installation.
