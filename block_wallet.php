@@ -20,7 +20,7 @@
  * @copyright  2023 Mohammad Farouk <phun.for.physics@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
+use enrol_wallet\transactions;
 /**
  * block wallet plugin.
  *
@@ -47,7 +47,7 @@ class block_wallet extends block_base {
      * @return stdClass|null
      */
     public function get_content() {
-        global $USER, $CFG, $OUTPUT, $DB;
+        global $USER, $CFG, $OUTPUT;
 
         if ($this->content !== null) {
             return $this->content;
@@ -60,7 +60,7 @@ class block_wallet extends block_base {
         $cangeneratecoupon = has_capability('enrol/wallet:createcoupon', $context);
 
         // Get the user balance.
-        $balance = enrol_wallet_plugin::get_user_balance($USER->id);
+        $balance = transactions::get_user_balance($USER->id);
 
         // Get the default currency.
         $currency = get_config('enrol_wallet', 'currency');

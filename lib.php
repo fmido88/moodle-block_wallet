@@ -33,7 +33,7 @@
  * @return void
  */
 function block_wallet_myprofile_navigation(core_user\output\myprofile\tree $tree, $user, $iscurrentuser, $course) {
-    global $CFG, $DB, $OUTPUT;
+    global $CFG, $OUTPUT;
     require_once($CFG->dirroot.'/enrol/wallet/lib.php');
     // Get the user balance.
     $balance = enrol_wallet_plugin::get_user_balance($user->id);
@@ -53,10 +53,10 @@ function block_wallet_myprofile_navigation(core_user\output\myprofile\tree $tree
     $render = $OUTPUT->render_from_template('enrol_wallet/display', $tempctx);
 
     // Add the new category.
-    $walletdetailscategory = new core_user\output\myprofile\category('walletcredit',
+    $wdcategory = new core_user\output\myprofile\category('walletcredit',
                                                                     get_string('walletcredit', 'enrol_wallet'),
                                                                     null);
-    $tree->add_category($walletdetailscategory);
+    $tree->add_category($wdcategory);
 
     $credittitle = ''; // No need now for a title.
     // Add the node.
