@@ -53,6 +53,7 @@ class block_wallet extends block_base {
             return $this->content;
         }
         require_once($CFG->dirroot.'/enrol/wallet/lib.php');
+        require_once($CFG->dirroot.'/enrol/wallet/locallib.php');
         $context = context_system::instance();
         // Check the capabilities of the user.
         $cancredit = has_capability('enrol/wallet:creditdebit', $context);
@@ -61,7 +62,7 @@ class block_wallet extends block_base {
 
         // Get the user balance.
         $balance = transactions::get_user_balance($USER->id);
-
+        $norefund = transactions::get_nonrefund_balance($USER->id);
         // Get the default currency.
         $currency = get_config('enrol_wallet', 'currency');
         // Get the default payment account.
@@ -69,52 +70,15 @@ class block_wallet extends block_base {
         // Get coupons settings.
         $couponsetting = get_config('enrol_wallet', 'coupons');
 
-        $transactionsurl = new moodle_url('/enrol/wallet/extra/transaction.php');
-        $transactions = html_writer::link($transactionsurl, get_string('transactions', 'enrol_wallet'));
-        $tempctx = new stdClass;
-        $tempctx->balance = $balance;
-        $tempctx->currency = $currency;
-        $tempctx->transactions = $transactions;
-
         // Display the current user's balance in the wallet.
-        $render = $OUTPUT->render_from_template('enrol_wallet/display', $tempctx);
+        $render = enrol_wallet_display_current_user_balance();
 
         // If the user can credit others, display the charging form.
         if ($cancredit) {
 
-            require_once($CFG->libdir.'/formslib.php');
+            $form = enrol_wallet_display_charger_form();
 
-            $mform = new \MoodleQuickForm('credit2', 'POST', $CFG->wwwroot.'/enrol/wallet/extra/charger.php');
-            $mform->addElement('header', 'main', get_string('chargingoptions', 'enrol_wallet'));
-
-            $mform->addElement('select', 'op', 'operation', ['credit' => 'credit', 'debit' => 'debit', 'balance' => 'balance']);
-
-            $options = array(
-                'ajax' => 'enrol_manual/form-potential-user-selector',
-                'multiple' => false,
-                'courseid' => SITEID,
-                'enrolid' => 0,
-                'perpage' => $CFG->maxusersperpage,
-                'userfields' => implode(',', \core_user\fields::get_identity_fields($context, true))
-            );
-            $mform->addElement('autocomplete', 'userlist', get_string('selectusers', 'enrol_manual'), array(), $options);
-            $mform->addRule('userlist', 'select user', 'required');
-
-            $mform->addElement('text', 'value', 'Value');
-            $mform->setType('value', PARAM_INT);
-            $mform->hideIf('value', 'op', 'eq', 'balance');
-
-            $mform->addElement('hidden', 'sesskey');
-            $mform->setType('sesskey', PARAM_TEXT);
-            $mform->setDefault('sesskey', sesskey());
-
-            $mform->addElement('submit', 'submit', 'submit');
-
-            ob_start();
-            $mform->display();
-            $output = ob_get_clean();
-
-            $render .= $OUTPUT->box($output);
+            $render .= $OUTPUT->box($form);
         } else {
             // Set the data we want to send to forms.
             $instance = new \stdClass;
