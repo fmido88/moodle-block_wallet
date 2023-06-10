@@ -41,7 +41,7 @@ class block_wallet extends block_base {
     /**
      * Getting the content of the block.
      * The display differ according to user.
-     * If the user has capabilites to charge other user's wallet or
+     * If the user has capabilities to charge other user's wallet or
      * a regular user.
      *
      * @return stdClass|null
@@ -60,9 +60,6 @@ class block_wallet extends block_base {
         $canviewcoupons = has_capability('enrol/wallet:viewcoupon', $context);
         $cangeneratecoupon = has_capability('enrol/wallet:createcoupon', $context);
 
-        // Get the user balance.
-        $balance = transactions::get_user_balance($USER->id);
-        $norefund = transactions::get_nonrefund_balance($USER->id);
         // Get the default currency.
         $currency = get_config('enrol_wallet', 'currency');
         // Get the default payment account.
