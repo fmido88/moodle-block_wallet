@@ -22,10 +22,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Wallet Ballance';
-$string['wallet:addinstance'] = 'add block Display Credit';
-$string['wallet:view'] = 'view the block Display Credit';
-$string['wallet:myaddinstance'] = 'user can add block Display Credit for himself';
+$string['pluginname'] = 'Wallet Balance';
+$string['wallet:addinstance'] = 'add block Wallet Balance';
+$string['wallet:view'] = 'view the block Wallet Balance';
+$string['wallet:myaddinstance'] = 'user can add block Wallet Balance for himself';
 $string['purchasedescription'] = 'Payment to topup wallet';
 $string['sendpaymentbutton'] = 'Pay';
 $string['paymentrequired'] = 'You are about to pay this amount for toping up your wallet';

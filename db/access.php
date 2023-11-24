@@ -25,44 +25,44 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array (
-    'block/wallet:addinstance' => array(
-        'captype' => 'write',
+$capabilities =  [
+    'block/wallet:addinstance' => [
+        'captype'      => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
-            'manager' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
+        'archetypes'   => [
+            'manager'        => CAP_ALLOW,
+            'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
-        ),
+        ],
         'clonepermissionsfrom' => 'moodle/site:manageblocks'
-        ),
+        ],
     'block/wallet:view' => [
-        'captype' => 'read',
+        'captype'      => 'read',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => [
-            'manager' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
+        'archetypes'   => [
+            'manager'        => CAP_ALLOW,
+            'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
         ],
         'clonepermissionsfrom' => 'moodle/site:manageblocks'
     ],
     'block/wallet:myaddinstance' => [
-        'captype' => 'write',
+        'captype'      => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => [
-            'manager' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
+        'archetypes'   => [
+            'manager'        => CAP_ALLOW,
+            'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
         ],
         'clonepermissionsfrom' => 'moodle/site:manageblocks'
     ],
     'block/wallet:debitcredit' => [
-        'captype' => 'write',
+        'captype'      => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => [
-            'manager' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
+        'archetypes'   => [
+            'manager'        => CAP_ALLOW,
+            'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
         ],
     ],
-);
+];
