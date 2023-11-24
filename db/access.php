@@ -25,7 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities =  [
+$capabilities = [
     'block/wallet:addinstance' => [
         'captype'      => 'write',
         'contextlevel' => CONTEXT_BLOCK,
