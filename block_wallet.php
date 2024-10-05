@@ -20,7 +20,7 @@
  * @copyright  2023 Mohammad Farouk <phun.for.physics@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-use enrol_wallet\transactions;
+
 /**
  * block wallet plugin.
  *
@@ -50,6 +50,10 @@ class block_wallet extends block_base {
         global $USER, $CFG, $OUTPUT;
 
         if ($this->content !== null) {
+            return $this->content;
+        }
+
+        if (!isloggedin() || isguestuser()) {
             return $this->content;
         }
 

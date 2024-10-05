@@ -30,5 +30,5 @@ $plugin->requires     = 2016120509;
 $plugin->component    = 'block_wallet';
 $plugin->maturity     = MATURITY_STABLE;
 $plugin->dependencies = [
-    'enrol_wallet' => 2023061002
+    'enrol_wallet' => 2023061002,
 ];

@@ -1,4 +1,4 @@
-# Display Wallet Ballance #
+# Display Wallet Balance #
 
 This plugin works along with enrol_wallet.
 It display the wallet balance for users in the block and in their profiles.

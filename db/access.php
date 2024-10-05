@@ -34,7 +34,7 @@ $capabilities = [
             'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
         ],
-        'clonepermissionsfrom' => 'moodle/site:manageblocks'
+        'clonepermissionsfrom' => 'moodle/site:manageblocks',
         ],
     'block/wallet:view' => [
         'captype'      => 'read',
@@ -44,7 +44,7 @@ $capabilities = [
             'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
         ],
-        'clonepermissionsfrom' => 'moodle/site:manageblocks'
+        'clonepermissionsfrom' => 'moodle/site:manageblocks',
     ],
     'block/wallet:myaddinstance' => [
         'captype'      => 'write',
@@ -54,15 +54,6 @@ $capabilities = [
             'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
         ],
-        'clonepermissionsfrom' => 'moodle/site:manageblocks'
-    ],
-    'block/wallet:debitcredit' => [
-        'captype'      => 'write',
-        'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes'   => [
-            'manager'        => CAP_ALLOW,
-            'teacher'        => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-        ],
+        'clonepermissionsfrom' => 'moodle/site:manageblocks',
     ],
 ];
