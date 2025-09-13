@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
+/*
  * wallet block plugin version specification.
  *
  * @package    block_wallet
@@ -24,11 +24,11 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version      = 2023112422;
-$plugin->release      = '1.6.5';
-$plugin->requires     = 2016120509;
 $plugin->component    = 'block_wallet';
+$plugin->release      = '6.0.0';
+$plugin->version      = 2025091000;
+$plugin->requires     = 2024100700;
 $plugin->maturity     = MATURITY_STABLE;
 $plugin->dependencies = [
-    'enrol_wallet' => 2023061002,
+    'enrol_wallet' => 2025091000,
 ];

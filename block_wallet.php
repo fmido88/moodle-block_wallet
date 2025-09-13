@@ -20,7 +20,9 @@
  * @copyright  2023 Mohammad Farouk <phun.for.physics@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
+use enrol_wallet\output\static_renderer;
+use enrol_wallet\output\topup_options;
+use enrol_wallet\output\wallet_balance;
 /**
  * block wallet plugin.
  *
@@ -47,7 +49,7 @@ class block_wallet extends block_base {
      * @return stdClass|null
      */
     public function get_content() {
-        global $USER, $CFG, $OUTPUT;
+        global $OUTPUT;
 
         if ($this->content !== null) {
             return $this->content;
@@ -57,28 +59,30 @@ class block_wallet extends block_base {
             return $this->content;
         }
 
-        require_once($CFG->dirroot.'/enrol/wallet/lib.php');
-        require_once($CFG->dirroot.'/enrol/wallet/locallib.php');
-
+        $data = [];
         // Check the capabilities of the user.
         $cancredit = has_capability('enrol/wallet:creditdebit', context_system::instance());
 
+        $data['cancredit'] = $cancredit;
         // Display the current user's balance in the wallet.
-        $render = enrol_wallet_display_current_user_balance();
+        $balance = new wallet_balance();
 
+        $data = array_merge($data, (array)$balance->export_for_template($OUTPUT));
         // If the user can credit others, display the charging form.
         if ($cancredit) {
 
-            $form = enrol_wallet_display_charger_form();
+            $data['chargerform'] = static_renderer::charger_form();
+            $data['couponsurls'] = static_renderer::coupons_urls(true);
 
-            $render .= $OUTPUT->box($form);
-            $render .= enrol_wallet_display_coupon_urls();
         } else {
-            $render .= enrol_wallet_display_topup_options();
+            $topup = new topup_options();
+
+            $data['topupoptions'] = $topup->export_for_template($OUTPUT);
+
         }
 
         $this->content = new stdClass();
-        $this->content->text = $render;
+        $this->content->text = $OUTPUT->render_from_template('enrol_wallet/wallet-block', $data);
 
         return $this->content;
     }
