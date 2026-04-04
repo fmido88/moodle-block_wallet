@@ -25,10 +25,10 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component    = 'block_wallet';
-$plugin->release      = '6.0.0';
-$plugin->version      = 2025091000;
+$plugin->release      = '6.0.1';
+$plugin->version      = 2026040400;
 $plugin->requires     = 2024100700;
 $plugin->maturity     = MATURITY_STABLE;
 $plugin->dependencies = [
-    'enrol_wallet' => 2025091000,
+    'enrol_wallet' => 2026040400,
 ];
